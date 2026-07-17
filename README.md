@@ -89,11 +89,19 @@ VS Code foreground detection checks the front window's workspace against the cur
 
 Ghostty + tmux is the environment tested by the author. VS Code, Apple Terminal, and iTerm2 integrations are implemented from their process and bundle identifiers but have not yet been independently verified.
 
+## macOS Setup
+
+After the first notification is sent:
+
+1. Open **System Settings → Notifications → pi-terminal-notifier**.
+2. Turn on **Allow Notifications**.
+3. Enable **Sounds** and choose **Banners** or **Alerts** as the notification style.
+4. If notifications are still hidden, check that **Focus** or **Do Not Disturb** is not suppressing them.
+
 ## Requirements / Notes
 
 - **macOS only**
 - Bundled notifier is **Apple Silicon (arm64) only**, ad-hoc signed, not notarized
-- First use may need Notification permission (and Automation for VS Code window-title checks)
 - Browser/GitHub downloads may be Gatekeeper-quarantined; a local clone usually works as-is
 - Child processes (`pi -p`, `--no-session`) and subagent sessions do not register user-facing notifications
 
