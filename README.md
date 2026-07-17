@@ -66,7 +66,7 @@ pi.events.emit("pi-terminal-notifier:notify", {
 | `plan-ready` | `sounds/plan-ready.aiff` |
 | `error` | `sounds/error.aiff` |
 
-Played via `afplay`. Source MP3s and full attribution: `NOTICE`.
+Played via `afplay`. Source MP3s and full attribution: [NOTICE](NOTICE).
 
 ## Compatibility
 
@@ -99,6 +99,6 @@ Ghostty + tmux is the environment tested by the author. VS Code, Apple Terminal,
 
 ## License
 
-**GPL-3.0-or-later** — see `LICENSE`.
+**GPL-3.0-or-later** — see [LICENSE](LICENSE).
 
-Third-party components (notifier binary, sound assets): `NOTICE`.
+Third-party components, including the notifier binary and sound assets, are documented in [NOTICE](NOTICE).
