@@ -38,12 +38,22 @@ Foreground suppression is skipped when `force: true` (use when the user must act
 ## Events
 
 ```ts
+// Approval required
 pi.events.emit("pi-terminal-notifier:notify", {
-  title: "Approval Needed",
-  body: "Allow bash?",
-  sound: "question", // see Sounds
-  force: true,       // skip foreground suppression
-  // subtitle?, group?
+  title: "✏️ Approval Needed",
+  body: "$ npm run deploy",
+  sound: "question",
+  force: true,
+  group: "approval",
+});
+
+// Plan ready
+pi.events.emit("pi-terminal-notifier:notify", {
+  title: "📋 Plan Ready",
+  body: "Review the implementation plan.",
+  sound: "plan-ready",
+  force: true,
+  group: "plan-ready",
 });
 ```
 
