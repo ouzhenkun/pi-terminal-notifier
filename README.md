@@ -2,6 +2,7 @@
 
 **macOS native notifications for pi — focus-aware, click-to-activate, with a namespaced event bus.**
 
+[![npm version](https://img.shields.io/npm/v/pi-terminal-notifier?style=for-the-badge)](https://www.npmjs.com/package/pi-terminal-notifier)
 [![License: GPL v3+](https://img.shields.io/badge/License-GPLv3+-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Why
@@ -13,15 +14,7 @@ When pi finishes a long turn or needs input, you are often in another app. pi-te
 ## Install
 
 ```bash
-pi install git:github.com/ouzhenkun/pi-terminal-notifier
-```
-
-Then run `/reload` or restart pi.
-
-For local development:
-
-```bash
-pi install /absolute/path/to/pi-terminal-notifier
+pi install npm:pi-terminal-notifier
 ```
 
 ## How it works
@@ -54,6 +47,34 @@ pi.events.emit("pi-terminal-notifier:notify", {
   sound: "plan-ready",
   force: true,
   group: "plan-ready",
+});
+```
+
+### Tool Call Integration
+
+Notify when `ask_user_question` is waiting for user input:
+
+```ts
+pi.on("tool_call", async (event) => {
+  if (event.toolName !== "ask_user_question") return undefined;
+
+  const input = event.input as {
+    questions?: Array<{
+      header?: string;
+      question?: string;
+    }>;
+  };
+  const first = input.questions?.[0];
+
+  pi.events.emit("pi-terminal-notifier:notify", {
+    title: "✋ Input Needed",
+    body: [first?.header, first?.question]
+      .filter(Boolean)
+      .join("\n"),
+    sound: "question",
+  });
+
+  return undefined;
 });
 ```
 
