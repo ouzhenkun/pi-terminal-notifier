@@ -1,0 +1,32 @@
+{
+  "name": "pi-terminal-notifier",
+  "version": "0.1.0",
+  "description": "macOS native notifications for pi — focus-aware, click-to-activate, with event bus",
+  "keywords": [
+    "pi",
+    "pi-package",
+    "pi-extension",
+    "macos",
+    "notification",
+    "notify"
+  ],
+  "license": "GPL-3.0-or-later",
+  "author": "ouzhenkun",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ouzhenkun/pi-terminal-notifier.git"
+  },
+  "homepage": "https://github.com/ouzhenkun/pi-terminal-notifier",
+  "bugs": {
+    "url": "https://github.com/ouzhenkun/pi-terminal-notifier/issues"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "image": "https://raw.githubusercontent.com/ouzhenkun/pi-terminal-notifier/main/assets/cover.png"
+  }
+}

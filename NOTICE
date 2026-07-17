@@ -1,0 +1,28 @@
+# Third-party notices
+
+This package redistributes third-party components. Their licenses are included under `licenses/` and `LICENSE` (project license is GPL-3.0-or-later).
+
+## pi-terminal-notifier.app
+
+- Source: [patricktree/pi-vscode-terminal-notify](https://github.com/patricktree/pi-vscode-terminal-notify) package `packages/pi-terminal-notifier`
+- License: Apache License 2.0 — see `licenses/Apache-2.0-pi-terminal-notifier.txt` and `licenses/Apache-2.0.txt`
+- Copyright: Patrick Kerschbaum
+- Bundled binary is ad-hoc signed, **Apple Silicon (arm64) only**, not notarized
+
+### Underlying terminal-notifier
+
+- Source: [julienXX/terminal-notifier](https://github.com/julienXX/terminal-notifier)
+- License: MIT — see `licenses/MIT-terminal-notifier.txt`
+- Copyright: Eloy Durán, Julien Blanchard, and contributors
+- The vendored binary reports itself as terminal-notifier 3.0.0
+
+## Notification sounds
+
+Runtime files: `sounds/*.aiff`
+
+- Derived from [777genius/claude-notifications-go](https://github.com/777genius/claude-notifications-go) `sounds/*.mp3`
+- Upstream license: GNU GPL v3 or later (see project `LICENSE`)
+- Modification: MP3 → AIFF conversion for `afplay`
+- Corresponding source: upstream repository
+  - https://github.com/777genius/claude-notifications-go
+  - directory `sounds/` (`task-complete.mp3`, `review-complete.mp3`, `question.mp3`, `plan-ready.mp3`, `error.mp3`)
