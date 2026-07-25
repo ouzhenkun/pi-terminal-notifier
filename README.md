@@ -26,7 +26,7 @@ pi install npm:pi-terminal-notifier
 
 Foreground suppression is skipped when `force: true` (use when the user must act).
 
-**Click-to-activate** focuses Ghostty, VS Code, Terminal, or iTerm2. Inside tmux, it also selects the originating window and pane.
+**Click-to-activate** focuses Ghostty, VS Code, Zed, Terminal, or iTerm2. Inside tmux, it also selects the originating window and pane.
 
 ## Events
 
@@ -105,12 +105,15 @@ Played via `afplay`. Source MP3s and full attribution: [NOTICE](NOTICE).
 |-------------|---------------|------------------------|-------------------|
 | Ghostty | Supported | Supported | Supported |
 | VS Code terminal | Supported | Workspace-aware | Supported |
+| Zed terminal | Supported | Workspace-aware | Supported |
 | Apple Terminal | Supported | Supported | Supported |
 | iTerm2 | Supported | Supported | Supported |
 | tmux | Supported | Active pane/window-aware | Returns to the originating pane |
 | Other terminals | Supported | Not detected | Not available |
 
-VS Code foreground detection checks the front window's workspace against the current working directory. In tmux, suppression checks whether the originating pane and window are active; clicking a notification selects that window and pane before focusing the terminal.
+VS Code foreground detection checks the front window's workspace against the current working directory. Zed detection works the same way (its window title is `<project> — <file>`, the reverse of VS Code's order). In tmux, suppression checks whether the originating pane and window are active; clicking a notification selects that window and pane before focusing the terminal.
+
+Zed and VS Code can focus the window that has the current project open, but neither exposes a way to select a specific terminal tab inside that window. When several tabs share one window, click-to-activate returns to the project window rather than the exact tab. Use tmux for pane-level targeting.
 
 ### Tested
 
@@ -118,7 +121,7 @@ VS Code foreground detection checks the front window's workspace against the cur
 - Ghostty running tmux
 - Native notification delivery and sound playback
 
-Ghostty + tmux is the environment tested by the author. VS Code, Apple Terminal, and iTerm2 integrations are implemented from their process and bundle identifiers but have not yet been independently verified.
+Ghostty + tmux is the environment tested by the author. VS Code, Zed, Apple Terminal, and iTerm2 integrations are implemented from their process and bundle identifiers but have not yet been independently verified.
 
 ## macOS Setup
 
