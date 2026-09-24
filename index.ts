@@ -25,19 +25,28 @@ export default function registerNotify(pi: ExtensionAPI): void {
 
   const notifier = createNotifier(__dirname, createTerminalContext());
   let suppressAgentEndNotify = false;
+  let settledMessages: any[] | null = null;
 
+  // agent_end also fires before an automatic retry and the extension event carries no
+  // willRetry flag, so hold the messages until agent_settled decides for the whole run.
   pi.on("agent_end", async (event: any) => {
+    settledMessages = event.messages ?? null;
+  });
+
+  pi.on("agent_settled", async () => {
     try {
+      const messages = settledMessages;
+      settledMessages = null;
       const wasSuppressed = suppressAgentEndNotify;
       suppressAgentEndNotify = false;
-      if (wasSuppressed || event.willRetry || !event.messages?.length) return;
+      if (wasSuppressed || !messages?.length) return;
 
-      const trigger = getTurnTrigger(event.messages);
+      const trigger = getTurnTrigger(messages);
       if (trigger?.role !== "user") return;
 
-      const text = extractLastAssistantText(event.messages);
+      const text = extractLastAssistantText(messages);
 
-      const lastMessage = event.messages[event.messages.length - 1];
+      const lastMessage = messages[messages.length - 1];
       const isError = lastMessage?.stopReason === "error" || !!lastMessage?.errorMessage;
 
       if (isError) {
