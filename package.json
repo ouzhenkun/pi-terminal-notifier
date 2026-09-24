@@ -1,6 +1,6 @@
 {
   "name": "pi-terminal-notifier",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "macOS native notifications for pi — focus-aware, click-to-activate, with event bus",
   "keywords": [
     "pi",
