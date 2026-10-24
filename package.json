@@ -1,6 +1,6 @@
 {
   "name": "pi-terminal-notifier",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "macOS native notifications for pi — focus-aware, click-to-activate, with event bus",
   "keywords": [
     "pi",
@@ -21,7 +21,7 @@
     "url": "https://github.com/ouzhenkun/pi-terminal-notifier/issues"
   },
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": "*"
+    "@earendil-works/pi-coding-agent": ">=1.2.0"
   },
   "pi": {
     "extensions": [
