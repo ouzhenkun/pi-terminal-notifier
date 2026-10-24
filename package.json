@@ -20,6 +20,15 @@
   "bugs": {
     "url": "https://github.com/ouzhenkun/pi-terminal-notifier/issues"
   },
+  "files": [
+    "index.ts",
+    "core/",
+    "sounds/",
+    "vendor/",
+    "licenses/",
+    "assets/",
+    "NOTICE"
+  ],
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": ">=1.2.0"
   },
